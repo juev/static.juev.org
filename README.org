@@ -1,0 +1,3 @@
+* static.juev.org
+
+Static site with assets for www.juev.org
