@@ -1,0 +1,24 @@
+# Contributor: Kaos < gianlucaatlas (at) gmail (dot) com >
+# Contributor: Julius Bullinger <julius.bullinger@gmail.com>
+# Maintainer: Julius Bullinger <julius.bullinger@gmail.com>
+pkgname=opera-devel-qt4
+_pkgver=10.00
+_build=4214
+pkgver=10.00_4214
+pkgrel=1
+pkgdesc="The Opera web browser development and testing version, shared Qt4 version"
+url="http://my.opera.com/desktopteam/blog"
+license=('custom:opera')
+arch=('i686')
+depends=('qt' 'bash')
+optdepends=('qgtkstyle-svn: to fit better in GNOME')
+conflicts=('opera' 'opera-devel' 'opera-static')
+provides=('opera' 'opera-devel' 'opera-static')
+source=(http://snapshot.opera.com/unix/10-turbo/intel-linux/opera-10.00-4214.gcc4-qt4.i386.tar.bz2)
+md5sums=()
+build() {
+   cd ${startdir}/src/opera-${pkgver/_/-}.gcc4-qt4.i386/
+   sed 's|/usr/X11R6/lib/mozilla/plugins=1|/usr/lib/mozilla/plugins=1|' -i usr/share/opera/ini/pluginpath.ini || return 1
+
+   ./install.sh DESTDIR=${startdir}/pkg
+}
