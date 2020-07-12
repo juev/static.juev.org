@@ -1,4 +1,4 @@
-name: Deploy site
+name: Deploy assets
 
 on:
   push:
@@ -6,21 +6,16 @@ on:
       - master
 
 jobs:
-  build-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2.2.2
-        with:
-          hugo-version: "0.73.0"
-          extended: true
+      - name: Install s3deploy
+        run: ./ci-install-s3deploy.sh
+        env:
+          S3DEPLOY_VERSION: 2.3.5
       - name: Deploy to S3
-        run: hugo deploy --maxDeletes -1
+        run: ./s3deploy -bucket static.juev.org -public-access -region eu-west-2 -max-delete -1 -source public/
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      # - uses: jakejarvis/cloudflare-purge-action@master
-      #   env:
-      #     CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
-      #     CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
