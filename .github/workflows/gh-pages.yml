@@ -20,7 +20,7 @@ jobs:
         env:
           S3DEPLOY_VERSION: 2.5.1
       - name: Deploy to S3
-        run: ./s3deploy -bucket static.juev.org -public-access -region eu-west-2 -max-delete -1 -source public/
+        run: ./s3deploy -bucket static.juev.org -acl='public-read' -region eu-west-2 -max-delete -1 -source public/
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
