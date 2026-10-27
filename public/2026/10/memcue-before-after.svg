@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 520" width="860" height="520" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+  <title>memcue 0.1 и 0.21: как факты попадают к агенту и в базу</title>
+  <rect width="860" height="520" rx="12" fill="#fcfcfb"/>
+
+  <!-- column headers -->
+  <text x="300" y="44" text-anchor="middle" font-size="20" font-weight="600" fill="#0b0b0b">0.1, 19 октября</text>
+  <text x="640" y="44" text-anchor="middle" font-size="20" font-weight="600" fill="#0b0b0b">0.21, 27 октября</text>
+
+  <!-- row labels -->
+  <g font-size="15" fill="#52514e">
+    <text x="24" y="104">Начало сессии</text>
+    <text x="24" y="194">Каждый промпт</text>
+    <text x="24" y="284">Во время работы</text>
+    <text x="24" y="364">Сжатие,</text>
+    <text x="24" y="384">конец сессии</text>
+    <text x="24" y="464">Уборка базы</text>
+  </g>
+
+  <g stroke="#e4e3df" stroke-width="1">
+    <line x1="24" y1="140" x2="836" y2="140"/>
+    <line x1="24" y1="230" x2="836" y2="230"/>
+    <line x1="24" y1="320" x2="836" y2="320"/>
+    <line x1="24" y1="420" x2="836" y2="420"/>
+  </g>
+
+  <!-- 0.1 column -->
+  <g font-size="14" fill="#0b0b0b">
+    <rect x="160" y="70" width="280" height="56" rx="8" fill="#eef0f2" stroke="#b9b8b2"/>
+    <text x="176" y="94">заметка: память — это memcue,</text>
+    <text x="176" y="113">файлы писать не нужно</text>
+
+    <rect x="160" y="160" width="280" height="56" rx="8" fill="#eef0f2" stroke="#b9b8b2"/>
+    <text x="176" y="184">hook подставляет до двух фактов,</text>
+    <text x="176" y="203">совпавших со словами промпта</text>
+
+    <text x="300" y="282" text-anchor="middle" fill="#8a8984">агент про память не думает</text>
+
+    <rect x="160" y="332" width="280" height="76" rx="8" fill="#eef0f2" stroke="#b9b8b2"/>
+    <text x="176" y="355">отдельная модель читает</text>
+    <text x="176" y="374">транскрипт и дописывает факты</text>
+    <text x="176" y="395" font-size="12" fill="#52514e">только добавление, ничего не сравнивает</text>
+
+    <text x="300" y="470" text-anchor="middle" fill="#8a8984">нет</text>
+  </g>
+
+  <!-- 0.21 column -->
+  <g font-size="14" fill="#0b0b0b">
+    <rect x="490" y="70" width="320" height="56" rx="8" fill="#e3eefb" stroke="#2a78d6"/>
+    <text x="506" y="94">карточка правил и решений</text>
+    <text x="506" y="113">и указание искать в памяти самому</text>
+
+    <text x="650" y="192" text-anchor="middle" fill="#8a8984">ничего не подставляется</text>
+
+    <rect x="490" y="246" width="320" height="60" rx="8" fill="#e3eefb" stroke="#2a78d6"/>
+    <text x="506" y="270"><tspan font-family="Menlo, Consolas, monospace" font-size="13">memcue search</tspan> — своими словами,</text>
+    <text x="506" y="291"><tspan font-family="Menlo, Consolas, monospace" font-size="13">memcue add</tspan> — сразу, когда узнал</text>
+
+    <text x="650" y="382" text-anchor="middle" fill="#8a8984">ничего не извлекается</text>
+
+    <rect x="490" y="436" width="320" height="56" rx="8" fill="#e3eefb" stroke="#2a78d6"/>
+    <text x="506" y="460">dream: модель сессии сливает дубли,</text>
+    <text x="506" y="479">дробит и переводит факты</text>
+  </g>
+</svg>
